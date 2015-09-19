@@ -32,7 +32,8 @@ class SwipeCardsViewBackground: UIView {
     var allCards = [SwipeCardsView]() // array of all cards
     
     //var nytArticles = NYTArticles()
-    //var articleRequest: NSURLRequest?
+    var attractions: Attactions = Attactions()
+    
     //var selectedArticle: ArticleData?
     var toAttractionList: [Attaction] = []
     var done = false
@@ -63,7 +64,7 @@ class SwipeCardsViewBackground: UIView {
         
         // load articles from the NYT API
         //println(articleSearchUrl)
-        nytArticles.load(articleSearchUrl, loadCompletionHandler: {
+        attractions.load(articleSearchUrl, loadCompletionHandler: {
             (nytArticles, errorString) -> Void in
             if let unwrappedErrorString = errorString {
                 print(unwrappedErrorString)
