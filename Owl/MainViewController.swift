@@ -15,13 +15,13 @@ class MainViewController: UIViewController {
     //var testArticles: ReadingList?
     
     
-    let urlString = "https://api.tripadvisor.com/api/partner/2.0/search/stl?key=HackTripAdvisor-ade29ff43aed"
-    var attsList: Attactions = Attactions()
+    //let urlString = "https://api.tripadvisor.com/api/partner/2.0/search/stl?key=HackTripAdvisor-ade29ff43aed"
+   // var attsList: Attactions = Attactions()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        attsList.load(urlString)  {
+        /*attsList.load(urlString)  {
             (newsies, errorString) -> Void in
             if let unwrappedErrorString = errorString {
                 print(unwrappedErrorString)
@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
             else {
                 print("Processdan here")
             }
-        }
+        }*/
         
         loadCards()
         

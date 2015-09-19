@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 
 // A set of constant and variable strings for making up the URL for article searching using TripAdvisor's API
+let attSearchBaseURL = "https://api.tripadvisor.com/api/partner/2.0/search"
+let attSearchAPIKey = "HackTripAdvisor-ade29ff43aed"
+var attSearchLocation = "stl"
+//stl?key=HackTripAdvisor-ade29ff43aed"
 /*let articleSearchBaseUrl = "http://api.nytimes.com/svc/mostpopular/v2"
 let articleSearchResourceType = "mostviewed" // mostemailed | mostshared | mostviewed
 let articleSearchSections = "all-sections"
@@ -60,24 +64,24 @@ class SwipeCardsViewBackground: UIView {
         
         //var stringTitles: [String] = []
         // Make up search url
-        //let articleSearchUrl = articleSearchBaseUrl + "/" + articleSearchResourceType + "/" + articleSearchSections + "/" + "\(articlesSearchNumOfDays)" + articleSearchReturnFormat + "?" + "&API-Key=" + articleSearchAPIKey
+        let attSearchURL = attSearchBaseURL + "/" + attSearchLocation + "?" + "key=" + attSearchAPIKey
         
         // load articles from the NYT API
-        //println(articleSearchUrl)
-        attractions.load(articleSearchUrl, loadCompletionHandler: {
-            (nytArticles, errorString) -> Void in
+        //print(attSearchURL)
+        attractions.load(attSearchURL, completionHandler: {
+            (attractions, errorString) -> Void in
             if let unwrappedErrorString = errorString {
                 print(unwrappedErrorString)
             } else {
-                for article in nytArticles.articles {
+                for attraction in attractions.newAtt {
                     let card = SwipeCardsView()
                     let labelTextStyle = NSMutableParagraphStyle()
                     labelTextStyle.lineSpacing = 10
                     labelTextStyle.lineBreakMode = NSLineBreakMode.ByWordWrapping
                     let attributes = [NSParagraphStyleAttributeName : labelTextStyle]
-                    card.label.attributedText = NSAttributedString(string: article.title, attributes:attributes)
-                    card.articleData = article
-                    if let imageUrl = NSURL(string: card.articleData.imageUrl) {
+                    card.label.attributedText = NSAttributedString(string: attraction.AttName, attributes:attributes)
+                    card.attractionData = attraction
+                    if let imageUrl = NSURL(string: card.attractionData.PhotoURL) {
                         if let imageData = NSData(contentsOfURL: imageUrl){
                             card.backgroundView = UIImageView(image: UIImage(data: imageData)!)
                         }
@@ -93,13 +97,6 @@ class SwipeCardsViewBackground: UIView {
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }
         })
-        
-        let card = SwipeCardsView()
-        card.attractionData = Attaction(AttName: "Mizzou", webURL: "missouri.edu", PhotoURL: "https://lh4.googleusercontent.com/-8Uc_2BlrMaU/AAAAAAAAAAI/AAAAAAAAAAA/7U0iV_9B5DA/s0-c-k-no-ns/photo.jpg")
-        for _ in 1...10 {
-            allCards.append(card);
-        }
-        
     }
     
     func loadCards() {
