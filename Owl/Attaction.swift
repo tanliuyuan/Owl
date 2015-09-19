@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Attaction: NSObject {
+class Attaction: NSObject, NSCoding {
 
     var AttName: String = ""
     var webURL: String = ""
@@ -18,5 +18,17 @@ class Attaction: NSObject {
         self.AttName = AttName
         self.webURL = webURL
         self.PhotoURL = PhotoURL
+    }
+    
+    required init?(coder decoder: NSCoder) {
+        self.AttName = decoder.decodeObjectForKey("AttName") as! String
+        self.webURL = decoder.decodeObjectForKey("webURL") as! String
+        self.PhotoURL = decoder.decodeObjectForKey("PhotoURL") as! String
+    }
+    
+    func encodeWithCoder(coder: NSCoder) {
+        coder.encodeObject(self.AttName, forKey: "AttName")
+        coder.encodeObject(self.webURL, forKey: "webURL")
+        coder.encodeObject(self.PhotoURL, forKey: "PhotoURL")
     }
 }

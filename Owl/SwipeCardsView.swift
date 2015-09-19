@@ -5,7 +5,7 @@
 //  Created by Liuyuan Tan on 9/19/15.
 //  Copyright © 2015 Mizzou Hackers. All rights reserved.
 //
-/*
+
 import Foundation
 import UIKit
 
@@ -26,7 +26,7 @@ class SwipeCardsView: UIView {
     var backgroundView: UIImageView
     var gradientView: UIImageView
     var label: UILabel
-    //var cardData: CardData
+    var attractionData: Attaction
     
     required init?(coder aDecoder: NSCoder) {
         xFromCenter = 0.0
@@ -37,7 +37,7 @@ class SwipeCardsView: UIView {
         backgroundView = UIImageView()
         gradientView = UIImageView()
         label = UILabel()
-        cardData = Data()
+        attractionData = Attaction(AttName: "",webURL: "",PhotoURL: "")
         
         super.init(coder: aDecoder)
         
@@ -58,14 +58,14 @@ class SwipeCardsView: UIView {
         backgroundView = UIImageView()
         gradientView = UIImageView()
         label = UILabel()
-        articleData = ArticleData()
+        attractionData = Attaction(AttName: "", webURL: "", PhotoURL: "")
         
         super.init(frame: frame)
         
         label = UILabel(frame: CGRectMake(self.frame.size.width * 0.05, self.frame.size.height * 0.6, self.frame.size.width * 0.85, self.frame.size.height * 0.4))
         label.textAlignment = NSTextAlignment.Natural
         label.textColor = UIColor.whiteColor()
-        label.font = UIFont(name: "Gotham Bold", size: 24)
+        label.font = UIFont(name: label.font.fontName, size: 24)
         label.numberOfLines = 0
         
         let backgroundImage = UIImage(named: "cardbackground.png")
@@ -192,4 +192,4 @@ class SwipeCardsView: UIView {
         print("NO")
     }
     
-}*/
+}

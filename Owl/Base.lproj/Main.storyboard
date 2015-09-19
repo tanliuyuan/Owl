@@ -51,7 +51,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Attraction List" id="u06-lN-A0E">
                             <connections>
-                                <segue destination="kfq-CC-20l" kind="show" id="xHf-rn-EJb"/>
+                                <segue destination="kfq-CC-20l" kind="show" identifier="owlToList" id="xHf-rn-EJb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
