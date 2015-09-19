@@ -63,7 +63,7 @@ class SwipeCardsViewBackground: UIView {
         
         // load articles from the NYT API
         //println(articleSearchUrl)
-        /*nytArticles.load(articleSearchUrl, loadCompletionHandler: {
+        nytArticles.load(articleSearchUrl, loadCompletionHandler: {
             (nytArticles, errorString) -> Void in
             if let unwrappedErrorString = errorString {
                 print(unwrappedErrorString)
@@ -91,7 +91,7 @@ class SwipeCardsViewBackground: UIView {
                 indicator.stopAnimating()
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }
-        })*/
+        })
         
         let card = SwipeCardsView()
         card.attractionData = Attaction(AttName: "Mizzou", webURL: "missouri.edu", PhotoURL: "https://lh4.googleusercontent.com/-8Uc_2BlrMaU/AAAAAAAAAAI/AAAAAAAAAAA/7U0iV_9B5DA/s0-c-k-no-ns/photo.jpg")

@@ -30,16 +30,8 @@ class MainViewController: UIViewController {
                 print("Processdan here")
             }
         }
-
         
-        
-       // scheduleLocalNotifications()
-        
-        //create the time and repeat every 12 hours
-       // let test: NSTimer = NSTimer(fireDate: checkWhichDate(), interval: 5, target: self, selector: "loadCards", userInfo: nil, repeats: true)
-       // NSRunLoop.currentRunLoop().addTimer(test, forMode: NSRunLoopCommonModes)
-        
-        //loadCards()
+        loadCards()
         
     }
     /*
@@ -63,35 +55,8 @@ class MainViewController: UIViewController {
     
     @IBAction func returnToCards(segue: UIStoryboardSegue) {
         
-    }
-    
-    func scheduleLocalNotifications() {
-        let dateString1 = "2000-01-01 8:00"
-        let dateString2 = "2000-01-01 20:00"
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        formatter.timeZone = NSTimeZone.systemTimeZone()
-        let fireDate1 = formatter.dateFromString(dateString1)
-        let fireDate2 = formatter.dateFromString(dateString2)
-        
-        let localNotification = UILocalNotification()
-        localNotification.alertAction = "Sea Cow"
-        localNotification.alertBody = "Hey! Sea Cow's got you some news!"
-        localNotification.soundName = UILocalNotificationDefaultSoundName
-        // set first notification time
-        localNotification.fireDate = fireDate1
-        // repeat notification daily
-        localNotification.repeatInterval = NSCalendarUnit.Day
-        // schedule first notification
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        // set second notification time
-        localNotification.fireDate = fireDate2
-        // schedule second notification
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }*/
-    
-    
-    
+
     func loadCards() {
         print("Loading Cards");
         let subViewFrame: CGRect = CGRectMake(0, self.navigationController!.navigationBar.frame.size.height+UIApplication.sharedApplication().statusBarFrame.height, self.view.frame.width, self.view.frame.height-UIApplication.sharedApplication().statusBarFrame.height-self.navigationController!.navigationBar.frame.size.height)
