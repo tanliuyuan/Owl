@@ -57,7 +57,7 @@
         <!--Attraction List-->
         <scene sceneID="D7s-Va-irS">
             <objects>
-                <viewController id="kfq-CC-20l" sceneMemberID="viewController">
+                <viewController id="kfq-CC-20l" customClass="AttractionListViewController" customModule="Owl" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DzW-6u-xvV"/>
                         <viewControllerLayoutGuide type="bottom" id="fiq-3c-ox2"/>
@@ -118,6 +118,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="attractionListTableView" destination="IJS-XL-3pd" id="Cjx-9M-unB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSw-w4-qaM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -185,6 +188,6 @@
         <image name="gradient.png" width="1" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tjm-Hv-vAY"/>
+        <segue reference="2x1-x3-vfQ"/>
     </inferredMetricsTieBreakers>
 </document>

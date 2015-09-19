@@ -11,8 +11,11 @@ import UIKit
 class Attactions: NSObject {
     
     var newAtt = [Attaction]()
+    var history: History = History()
+
     func load(fromURLString: String, completionHandler: (Attactions, String?) -> Void) {
         newAtt = [Attaction]()
+        history.load()
         if let url = NSURL(string: fromURLString) {
             let urlRequest = NSMutableURLRequest(URL: url)
             let session = NSURLSession.sharedSession()
@@ -38,16 +41,12 @@ class Attactions: NSObject {
 
     
     func parse(jsonData: NSData, completionHandler: (Attactions, String?) -> Void) {
-        var jsonError: NSError
+        var _: NSError
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
             if (jsonResult!.count > 0) {
-                print("Check1")
                 if let attractions = jsonResult?["attractions"] as? NSArray {
                     if (jsonResult!.count > 0) {
-                        
-                        print("Check2")
-
                         for single_attraction in attractions {
                             if let locationID = single_attraction["location_id"] as? NSString {
                                 if let locationName = single_attraction["name"] as? NSString {
