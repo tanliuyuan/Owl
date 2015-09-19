@@ -11,7 +11,7 @@ import UIKit
 // A set of constant and variable strings for making up the URL for article searching using TripAdvisor's API
 let attSearchBaseURL = "https://api.tripadvisor.com/api/partner/2.0/search"
 let attSearchAPIKey = "HackTripAdvisor-ade29ff43aed"
-var attSearchLocation = "stl"
+var attSearchLocation = "beijing"
 //stl?key=HackTripAdvisor-ade29ff43aed"
 /*let articleSearchBaseUrl = "http://api.nytimes.com/svc/mostpopular/v2"
 let articleSearchResourceType = "mostviewed" // mostemailed | mostshared | mostviewed
@@ -73,7 +73,12 @@ class SwipeCardsViewBackground: UIView {
             if let unwrappedErrorString = errorString {
                 print(unwrappedErrorString)
             } else {
+                
+                sleep(2)
+                
+                print("Enter else TEST")
                 for attraction in attractions.newAtt {
+                    print(attractions.newAtt.count)
                     let card = SwipeCardsView()
                     let labelTextStyle = NSMutableParagraphStyle()
                     labelTextStyle.lineSpacing = 10
@@ -156,7 +161,7 @@ class SwipeCardsViewBackground: UIView {
         }
         if(swiped == allCards.count) {
             print("Last card has been swiped")
-            print(toAttractionList.count)
+            print("Number of swipe rights: \(toAttractionList.count)")
             //try to segue to the attraction list here.
             done = true
             self.window?.rootViewController?.childViewControllers[0].performSegueWithIdentifier("owlToList", sender: self)
