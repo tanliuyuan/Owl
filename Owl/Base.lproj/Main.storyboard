@@ -24,7 +24,7 @@
         <!--Owl-->
         <scene sceneID="xwT-6C-oOV">
             <objects>
-                <viewController id="vJN-90-jFM" userLabel="Owl" sceneMemberID="viewController">
+                <viewController id="vJN-90-jFM" userLabel="Owl" customClass="MainViewController" customModule="Owl" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xeq-wd-1ra"/>
                         <viewControllerLayoutGuide type="bottom" id="qum-sN-dSF"/>
@@ -32,6 +32,14 @@
                     <view key="view" contentMode="scaleToFill" id="gDX-Gn-MoY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="xcode7 sucks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIC-Ea-55f">
+                                <rect key="frame" x="235" y="281" width="104" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
@@ -110,7 +118,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Attraction List" id="d4Y-M4-m6C">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="vDR-ys-iGJ"/>
+                        <barButtonItem key="backBarButtonItem" title="Attraction List" id="vDR-ys-iGJ"/>
                         <barButtonItem key="rightBarButtonItem" image="Settings" id="eLt-LI-SfB">
                             <connections>
                                 <segue destination="o3u-pg-MuN" kind="show" id="2x1-x3-vfQ"/>
@@ -184,6 +192,6 @@
         <image name="gradient.png" width="1" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2x1-x3-vfQ"/>
+        <segue reference="Tjm-Hv-vAY"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -5,8 +5,8 @@
 //  Created by Liuyuan Tan on 9/19/15.
 //  Copyright © 2015 Mizzou Hackers. All rights reserved.
 //
-
-/*import Foundation
+/*
+import Foundation
 import UIKit
 
 let ACTION_MARGIN = 50 // Distance from center when action is triggered. Higher = swipe further for the action to be called
@@ -26,7 +26,7 @@ class SwipeCardsView: UIView {
     var backgroundView: UIImageView
     var gradientView: UIImageView
     var label: UILabel
-    var articleData: ArticleData
+    //var cardData: CardData
     
     required init?(coder aDecoder: NSCoder) {
         xFromCenter = 0.0
@@ -37,7 +37,7 @@ class SwipeCardsView: UIView {
         backgroundView = UIImageView()
         gradientView = UIImageView()
         label = UILabel()
-        articleData = ArticleData()
+        cardData = Data()
         
         super.init(coder: aDecoder)
         
