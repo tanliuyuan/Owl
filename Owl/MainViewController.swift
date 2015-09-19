@@ -14,9 +14,26 @@ class MainViewController: UIViewController {
     var swipeCardsViewBackground: SwipeCardsViewBackground?
     var testArticles: ReadingList?
     */
+    
+    
+    let urlString = "http://api.tripadvisor.com/api/partner/2.0/search/stl?key=HackTripAdvisor-ade29ff43aed"
+    var attsList: Attactions = Attactions()
+    //var selectedNewsStory: NewsStory?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        attsList.load(urlString)  {
+            (newsies, errorString) -> Void in
+            if let unwrappedErrorString = errorString {
+                print(unwrappedErrorString)
+            }
+            else {
+                print("Processdan here")
+            }
+        }
+
+        
         
        // scheduleLocalNotifications()
         

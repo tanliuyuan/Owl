@@ -41,8 +41,63 @@ class Attactions: NSObject {
         var jsonError: NSError
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
-            if (jsonResult!.count > 0)
-            {
+            if (jsonResult!.count > 0) {
+                print("Check1")
+                if let attractions = jsonResult?["attractions"] as? NSArray {
+                    if (jsonResult!.count > 0) {
+                        
+                        print("Check2")
+
+                        for single_attraction in attractions {
+                            if let locationID = single_attraction["location_id"] as? NSString {
+                                if let locationName = single_attraction["name"] as? NSString {
+                                    if let webURL = single_attraction["name"] as? NSString {
+                                        
+                                        let jsonUrl = "http://api.tripadvisor.com/api/partner/2.0/location/" + "\(locationID)" + "/photos?key=HackTripAdvisor-ade29ff43aed"
+                                        
+                                        let session = NSURLSession.sharedSession()
+                                        let shotsUrl = NSURL(string: jsonUrl)
+                                        
+                                        let taskPhoto = session.dataTaskWithURL(shotsUrl!) {
+                                            (data, response, error) -> Void in
+                                            
+                                            do {
+                                                let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableContainers ) as! NSDictionary
+                                                if let photos = jsonData["data"] as? NSArray {
+                                                    if (photos.count > 0) {
+                                                        print("CHeck1")
+                                                        if let singlePhoto = photos[0] as? NSDictionary {
+                                                            print("CHeck2")
+
+                                                            if let singlePhotoLarge = singlePhoto["images"] as? NSDictionary {
+                                                                print("CHeck3")
+
+                                                                if let iDontKnowWhatIShouldCouldThis = singlePhotoLarge["large"] as? NSDictionary {
+                                                                    print("CHeck4")
+
+                                                                    if let photoURL = iDontKnowWhatIShouldCouldThis["url"] as? String {
+                                                                        print(photoURL)
+                                                                        let newAttaction = Attaction(AttName: locationName as String, webURL: webURL as String, PhotoURL: photoURL as String)
+                                                                        self.newAtt.append(newAttaction)
+                                                                    }
+                                                                }
+                                                                
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            } catch _ {
+                                                // Error
+                                            }
+                                        }
+                                        taskPhoto.resume()
+                                    }
+                                }
+                            }
+                        }
+                    }
+               }
+                
                 //let newAttaction = Attaction(AttName: xxx as String, webURL: xxx as String, PhotoURL: xxx as String)
                 //newAtt.append(newAttaction)
             }
