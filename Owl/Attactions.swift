@@ -53,7 +53,7 @@ class Attactions: NSObject {
                                 if let locationName = single_attraction["name"] as? NSString {
                                     if let webURL = single_attraction["name"] as? NSString {
                                         
-                                        let jsonUrl = "http://api.tripadvisor.com/api/partner/2.0/location/" + "\(locationID)" + "/photos?key=HackTripAdvisor-ade29ff43aed"
+                                        let jsonUrl = "https://api.tripadvisor.com/api/partner/2.0/location/" + "\(locationID)" + "/photos?key=HackTripAdvisor-ade29ff43aed"
                                         
                                         let session = NSURLSession.sharedSession()
                                         let shotsUrl = NSURL(string: jsonUrl)

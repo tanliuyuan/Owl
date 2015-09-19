@@ -9,16 +9,14 @@
 import UIKit
 
 class MainViewController: UIViewController {
-/*
-    var allArticles: [ArticleData]?
+
+    //var allArticles: [ArticleData]?
     var swipeCardsViewBackground: SwipeCardsViewBackground?
-    var testArticles: ReadingList?
-    */
+    //var testArticles: ReadingList?
     
     
-    let urlString = "http://api.tripadvisor.com/api/partner/2.0/search/stl?key=HackTripAdvisor-ade29ff43aed"
+    let urlString = "https://api.tripadvisor.com/api/partner/2.0/search/stl?key=HackTripAdvisor-ade29ff43aed"
     var attsList: Attactions = Attactions()
-    //var selectedNewsStory: NewsStory?
     
     override func viewDidLoad() {
         
@@ -90,60 +88,15 @@ class MainViewController: UIViewController {
         localNotification.fireDate = fireDate2
         // schedule second notification
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-    }
+    }*/
     
     
     
     func loadCards() {
+        print("Loading Cards");
         let subViewFrame: CGRect = CGRectMake(0, self.navigationController!.navigationBar.frame.size.height+UIApplication.sharedApplication().statusBarFrame.height, self.view.frame.width, self.view.frame.height-UIApplication.sharedApplication().statusBarFrame.height-self.navigationController!.navigationBar.frame.size.height)
         swipeCardsViewBackground = SwipeCardsViewBackground(frame: subViewFrame)
         self.view.addSubview(swipeCardsViewBackground!)
     }
     
-    func test() {
-        print("test")
-    }
-    
-    func checkWhichDate() -> NSDate{
-        
-        var dateString1 = "2000-01-01 8:00"
-        var dateString2 = "2015-05-12 20:00"
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        formatter.timeZone = NSTimeZone.systemTimeZone()
-        
-        
-        let date = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Hour, .Minute, .Day, .Year, .Month], fromDate: date)
-        let year = components.year as NSNumber
-        let month = components.month as NSNumber
-        let day = components.day as NSNumber
-        let hour = components.hour
-        let hour1 = 8 as NSNumber
-        let hour2 = 20 as NSNumber
-        let day1 = (day as Int + 1) as NSNumber
-        
-        if(hour > 8) {
-            dateString1 = year.stringValue + "-" + month.stringValue + "-" + day1.stringValue + " " + hour1.stringValue + ":00"
-        } else {
-            dateString1 = year.stringValue + "-" + month.stringValue + "-" + day.stringValue + " " + hour1.stringValue + ":00"
-        }
-        dateString2 = year.stringValue + "-" + month.stringValue + "-" + day.stringValue + " " + hour2.stringValue + ":00"
-        
-        print(dateString1)
-        print(dateString2)
-        
-        let fireDate1 = formatter.dateFromString(dateString1)
-        let fireDate2 = formatter.dateFromString(dateString2)
-        if(hour > 8 && hour < 20) {
-            //return 20:00
-            return fireDate2!
-            
-        } else {
-            //return 8:00
-            return fireDate1!
-        }
-    }
-}*/
 }
