@@ -10,9 +10,9 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    //var allArticles: [ArticleData]?
+    var allAttractions: [Attaction]?
     var swipeCardsViewBackground: SwipeCardsViewBackground?
-    //var testArticles: ReadingList?
+    var testArticles: AttractionList?
     
     
     //let urlString = "https://api.tripadvisor.com/api/partner/2.0/search/stl?key=HackTripAdvisor-ade29ff43aed"

@@ -9,14 +9,14 @@
 import UIKit
 
 class History: NSObject {
-    var allAttractions: [Attaction] = []
+    var allAttractions: [viewAttraction] = []
     
     override init() {
         print("History initialized")
     }
     
     required init(coder decoder: NSCoder) {
-        self.allAttractions = decoder.decodeObjectForKey("allAttactions") as! [Attaction]
+        self.allAttractions = decoder.decodeObjectForKey("allAttactions") as! [viewAttraction]
     }
     
     func encodeWithCoder(coder: NSCoder) {
@@ -24,7 +24,7 @@ class History: NSObject {
     }
     
     func addAttraction(attraction: Attaction) {
-        allAttractions.append(Attaction(AttName: attraction.AttName, webURL: attraction.webURL, PhotoURL: attraction.PhotoURL))
+        allAttractions.append(viewAttraction(title: attraction.AttName, url: attraction.webURL))
     }
     
     func save() {
@@ -49,8 +49,12 @@ class History: NSObject {
     func checkIfExists(attractionName: String) -> Bool {
         var i = 0
         for(i=0; i < allAttractions.count; i++) {
-            //  println(articleName)
-            if(attractionName == allAttractions[i].AttName) {
+              print(attractionName)
+            
+            self.allAttractions = allAttractions as Array<viewAttraction>
+            
+            
+            if (attractionName == allAttractions[i].title ) {
                 //println("Article already read")
                 return true
             }

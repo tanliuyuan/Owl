@@ -13,6 +13,7 @@ class Attaction: NSObject, NSCoding {
     var AttName: String = ""
     var webURL: String = ""
     var PhotoURL: String = ""
+    //var section: String = ""
     
     init(AttName:String, webURL:String, PhotoURL:String) {
         self.AttName = AttName
@@ -20,15 +21,22 @@ class Attaction: NSObject, NSCoding {
         self.PhotoURL = PhotoURL
     }
     
-    required init?(coder decoder: NSCoder) {
-        self.AttName = decoder.decodeObjectForKey("AttName") as! String
-        self.webURL = decoder.decodeObjectForKey("webURL") as! String
-        self.PhotoURL = decoder.decodeObjectForKey("PhotoURL") as! String
+    func encodeWithCoder(coder: NSCoder) {
+        //println("trying to encode in article data...")
+        coder.encodeObject(AttName, forKey: "AttName")
+        coder.encodeObject(PhotoURL, forKey: "PhotoURL")
+        coder.encodeObject(webURL, forKey: "webURL")
+        //coder.encodeObject(section, forKey: "section")
+        //println("done")
+        
     }
     
-    func encodeWithCoder(coder: NSCoder) {
-        coder.encodeObject(self.AttName, forKey: "AttName")
-        coder.encodeObject(self.webURL, forKey: "webURL")
-        coder.encodeObject(self.PhotoURL, forKey: "PhotoURL")
+    required init?(coder aDecoder: NSCoder) {
+        AttName = aDecoder.decodeObjectForKey("AttName") as! String
+        PhotoURL = aDecoder.decodeObjectForKey("PhotoURL") as! String
+        webURL = aDecoder.decodeObjectForKey("webURL") as! String
+        //section = aDecoder.decodeObjectForKey("section") as! String
+        print(AttName + " " + PhotoURL + " " + webURL + " ")
     }
+
 }

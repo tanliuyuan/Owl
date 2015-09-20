@@ -17,16 +17,12 @@ enum OverlayViewMode : Int {
 class OverlayView: UIView {
     
     var mode: OverlayViewMode
-    //var imageView: UIImageView
     
     override init(frame:CGRect) {
         mode = OverlayViewMode.OverlayViewLeft
-        //imageView = UIImageView()
         super.init(frame:frame)
         self.layer.cornerRadius = 10
         self.backgroundColor = UIColor.redColor()
-        //imageView = UIImageView(image: UIImage(named: "noButton"))
-        //self.addSubview(imageView)
     }
     
     convenience required init?(coder aDecoder: NSCoder) {
@@ -36,10 +32,8 @@ class OverlayView: UIView {
     func setMode(mode: OverlayViewMode) {
         if mode == OverlayViewMode.OverlayViewLeft {
             self.backgroundColor = UIColor.redColor()
-            //imageView.image = UIImage(named: "noButton")
         } else {
             self.backgroundColor = UIColor.greenColor()
-            //imageView.image = UIImage(named: "yesButton")
         }
     }
     

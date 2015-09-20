@@ -12,13 +12,6 @@ import UIKit
 let attSearchBaseURL = "https://api.tripadvisor.com/api/partner/2.0/search"
 let attSearchAPIKey = "4695B5894B33493BA4A0389F61843655"
 var attSearchLocation = "BeiJing"
-//stl?key=HackTripAdvisor-ade29ff43aed"
-/*let articleSearchBaseUrl = "http://api.nytimes.com/svc/mostpopular/v2"
-let articleSearchResourceType = "mostviewed" // mostemailed | mostshared | mostviewed
-let articleSearchSections = "all-sections"
-let articlesSearchNumOfDays = 1 // 1 | 7 | 30
-let articleSearchReturnFormat = ".json"
-let articleSearchAPIKey = "b772e34fc2a53d05fe60d6c63d0c0e4c:9:71573042"*/
 
 class SwipeCardsViewBackground: UIView {
     
@@ -38,18 +31,18 @@ class SwipeCardsViewBackground: UIView {
     //var nytArticles = NYTArticles()
     var attractions: Attactions = Attactions()
     
-    //var selectedArticle: ArticleData?
+    var selectedAttraction: Attaction?
     var toAttractionList: [Attaction] = []
     var done = false
-    //var testArticles: ReadingList = ReadingList()
+    var testAttractions: AttractionList = AttractionList()
     
     override init(frame: CGRect) {
         
         super.init(frame:frame)
         
-        /*if(testArticles.load() == true) {
+        if(testAttractions.load() == true) {
             print("Reading List successfully loaded")
-        }*/
+        }
         
         // prepare a loading indicator
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
@@ -148,8 +141,8 @@ class SwipeCardsViewBackground: UIView {
         if(direction == "right") {
             print("Saving to reading list array")
             toAttractionList.append(attraction)
-            //testArticles.addArticle(attraction)
-            //testArticles.save()
+            testAttractions.addAttraction(attraction)
+            testAttractions.save()
         }
         // if all cards haven't been gone through, load another card into the deck
         if loaded < allCards.count {
