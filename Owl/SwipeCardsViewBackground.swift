@@ -9,9 +9,10 @@ import Foundation
 import UIKit
 
 // A set of constant and variable strings for making up the URL for article searching using TripAdvisor's API
-let attSearchBaseURL = "https://api.tripadvisor.com/api/partner/2.0/search"
-let attSearchAPIKey = "4695B5894B33493BA4A0389F61843655"
-var attSearchLocation = "BeiJing"
+let attSearchBaseURL = "https://api.tripadvisor.com/api/partner/2.0/map/"
+let attSearchAPIKey = "/attractions?key=4695B5894B33493BA4A0389F61843655"
+let googleMapApi = "https://maps.googleapis.com/maps/api/geocode/json?address="
+var attSearchLocation = "shanghai"
 
 class SwipeCardsViewBackground: UIView {
     
@@ -57,19 +58,60 @@ class SwipeCardsViewBackground: UIView {
         
         //var stringTitles: [String] = []
         // Make up search url
-        let attSearchURL = attSearchBaseURL + "/" + attSearchLocation + "?" + "key=" + attSearchAPIKey
         
+        var attSearchURL = ""
+        
+        let googleMapLocationURL = googleMapApi + attSearchLocation
+        //print (googleMapLocationURL)
+        let session = NSURLSession.sharedSession()
+        let shotsUrl = NSURL(string: googleMapLocationURL)
+        
+        let googleMapTask = session.dataTaskWithURL(shotsUrl!) {
+            (data, response, error) -> Void in
+            do {
+                let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options:NSJSONReadingOptions.MutableContainers ) as! NSDictionary
+                if (jsonData.count > 0){
+                    if let status = jsonData["status"] as? String {
+                        if (status == "OK") {
+                            if let result = jsonData["results"] as? NSArray {
+                                if let searchLocation = result[0] as? NSDictionary {
+                                    if let geomerty = searchLocation["geometry"] as? NSDictionary {
+                                        if let location = geomerty["location"] as? NSDictionary {
+                                            if let googleLat = location["lat"] as? Double {
+                                                if let googleLng = location["lng"] as? Double {
+                                                    let mapURL = attSearchBaseURL + String(googleLat) + "," + String(googleLng) + attSearchAPIKey
+                                                    attSearchURL = mapURL
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch _ {
+                print("GMap Error")
+            }
+        }
+        googleMapTask.resume()
+        
+        //print(attSearchURL)
+        
+        //let attSearchURL = attSearchBaseURL + "/" + attSearchLocation + "?" + "key=" + attSearchAPIKey
+        sleep(1)
         // load articles from the NYT API
         //print(attSearchURL)
+        
         attractions.load(attSearchURL, completionHandler: {
             (attractions, errorString) -> Void in
             if let unwrappedErrorString = errorString {
                 print(unwrappedErrorString)
             } else {
                 
-                sleep(2)
+                sleep(1)
                 
-                print("Enter else TEST")
+                //print("Enter else TEST")
                 for attraction in attractions.newAtt {
                     print(attractions.newAtt.count)
                     let card = SwipeCardsView()
@@ -96,6 +138,7 @@ class SwipeCardsViewBackground: UIView {
             }
         })
     }
+    
     
     func loadCards() {
         

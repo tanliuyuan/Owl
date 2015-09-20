@@ -22,6 +22,8 @@ class AttractionListViewController: UIViewController, UITableViewDataSource, UIT
     let articleSearchReturnFormat = ".json"
     let articleSearchAPIKey = "b772e34fc2a53d05fe60d6c63d0c0e4c:9:71573042"*/
     
+    @IBOutlet weak var attractionsListTableView: UITableView!
+    
     var attractions: Attaction?
     
     override func viewDidLoad() {
@@ -47,8 +49,11 @@ class AttractionListViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if allAttractions != nil {
+            print("test1")
+            print(allAttractions!.count)
             return allAttractions!.count
         } else {
+            print("test2")
             return 0
         }
     }
@@ -75,7 +80,7 @@ class AttractionListViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedAttraction = allAttractions![indexPath.row]
-        performSegueWithIdentifier("showArticle", sender: self)
+        performSegueWithIdentifier("showAttraction", sender: self)
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
