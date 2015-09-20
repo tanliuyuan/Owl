@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131288E01BAE3E9D00FA3670 /* AttractionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131288DF1BAE3E9D00FA3670 /* AttractionViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		13F3C01A1BADEDDB0039715B /* Attaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F3C0191BADEDDB0039715B /* Attaction.swift */; settings = {ASSET_TAGS = (); }; };
 		13F3C01C1BADEDE80039715B /* Attactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F3C01B1BADEDE80039715B /* Attactions.swift */; settings = {ASSET_TAGS = (); }; };
 		6D10C8E21BADF5C0002D980A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D10C8E11BADF5C0002D980A /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		131288DF1BAE3E9D00FA3670 /* AttractionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionViewController.swift; sourceTree = "<group>"; };
 		13F3C0191BADEDDB0039715B /* Attaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attaction.swift; sourceTree = "<group>"; };
 		13F3C01B1BADEDE80039715B /* Attactions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attactions.swift; sourceTree = "<group>"; };
 		6D10C8E11BADF5C0002D980A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				13F3C0191BADEDDB0039715B /* Attaction.swift */,
 				13F3C01B1BADEDE80039715B /* Attactions.swift */,
 				6D10C8E91BAE1E08002D980A /* AttractionListViewController.swift */,
+				131288DF1BAE3E9D00FA3670 /* AttractionViewController.swift */,
 			);
 			path = Owl;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				6D10C8E21BADF5C0002D980A /* MainViewController.swift in Sources */,
 				6DEADA041BADB93B00FF1702 /* AppDelegate.swift in Sources */,
 				6D86C0751BADD373007027C9 /* SwipeCardsView.swift in Sources */,
+				131288E01BAE3E9D00FA3670 /* AttractionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

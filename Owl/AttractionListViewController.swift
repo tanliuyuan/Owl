@@ -35,15 +35,15 @@ class AttractionListViewController: UIViewController, UITableViewDataSource, UIT
         
         // load articles from the NYT API
         readingList.load(articleSearchUrl, loadCompletionHandler: {
-            (nytArticles, errorString) -> Void in
-            if let unwrappedErrorString = errorString {
-                print(unwrappedErrorString)
-            } else {
-                
-                print(self.readingList.articles.count)
-                self.myTableView.reloadData()
-                
-            }
+        (nytArticles, errorString) -> Void in
+        if let unwrappedErrorString = errorString {
+        print(unwrappedErrorString)
+        } else {
+        
+        print(self.readingList.articles.count)
+        self.myTableView.reloadData()
+        
+        }
         })
         allArticles = testArticles?.getArticles()*/
     }
@@ -69,9 +69,7 @@ class AttractionListViewController: UIViewController, UITableViewDataSource, UIT
             let url = NSURL(string: allAttractions![indexPath.row].PhotoURL)
             let data = NSData(contentsOfURL: url!)
             
-            
-            
-            cell.backgroundImage.image = UIImage(data: data!)
+            //cell.backgroundImage.image = UIImage(data: data!)
             
         }
         
@@ -79,7 +77,7 @@ class AttractionListViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedArticle = allArticles![indexPath.row]
+        selectedAttraction = allAttractions![indexPath.row]
         performSegueWithIdentifier("showArticle", sender: self)
     }
     
@@ -92,49 +90,14 @@ class AttractionListViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        
-        let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal , title: "Share", handler: { (action: UITableViewRowAction, indexPath: NSIndexPath) in
-            
-            let composer = TWTRComposer()
-            
-            composer.setText("Check out this awesome article!\n\n" + self.allArticles![indexPath.row].url + "\n\n#seaCow #articleTags? #whatever")
-            composer.setImage(UIImage(named: "fabric"))
-            
-            composer.showWithCompletion { (result) -> Void in
-                if (result == TWTRComposerResult.Cancelled) {
-                    print("Tweet composition cancelled")
-                }
-                else {
-                    print("Sending tweet!")
-                }
-            }
-            
-            self.myTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            
-            return
-        })
-        
-        shareAction.backgroundColor = UIColor.blueColor()
-        
-        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default , title: "Delete", handler: { (action: UITableViewRowAction, indexPath: NSIndexPath) in
-            
-            self.allArticles?.removeAtIndex(indexPath.row)
-            self.testArticles?.removeArticle(indexPath.row)
-            self.myTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            self.testArticles!.save()
-            return
-        })
-        
-        return [deleteAction, shareAction]
-        
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if (segue.identifier == "showArticle"){
-            let destinationViewController = segue.destinationViewController as! ArticleViewController
-            destinationViewController.article = selectedArticle
+        if (segue.identifier == "showAttraction"){
+            let destinationViewController = segue.destinationViewController as! AttractionViewController
+            //destinationViewController.attractionWebURL =
+            
+            // let newsIndex = tableView.indexPathForSelectedRow()?.row
         }
         
     }
