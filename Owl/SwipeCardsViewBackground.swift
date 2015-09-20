@@ -134,10 +134,11 @@ class SwipeCardsViewBackground: UIView {
         let attraction: Attaction = deck[0].attractionData
         deck.removeAtIndex(0)
         print("Card swiped away")
-        if(history.checkIfExists(attraction.AttName)) == false {
+        /*if(history.checkIfExists(attraction.AttName)) == false {
             history.addAttraction(attraction)
             history.save()
-        }
+        }*/
+        history.save()
         if(direction == "right") {
             print("Saving to reading list array")
             toAttractionList.append(attraction)

@@ -54,10 +54,10 @@ class History: NSObject {
             self.allAttractions = allAttractions as Array<viewAttraction>
             
             
-            if (attractionName == allAttractions[i].title ) {
+            /*if (attractionName == allAttractions[i].title ) {
                 //println("Article already read")
                 return true
-            }
+            }*/
         }
         return false
     }
