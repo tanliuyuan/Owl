@@ -10,9 +10,6 @@ import UIKit
 
 class AttractionListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
-    @IBOutlet weak var attractionListTableView: UITableViewCell!
-    
     var attractionList = Attactions()
     var allAttractions: [Attaction]?
     var selectedAttraction: Attaction?

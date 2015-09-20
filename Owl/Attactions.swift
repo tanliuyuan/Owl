@@ -52,7 +52,7 @@ class Attactions: NSObject {
                                 if let locationName = single_attraction["name"] as? NSString {
                                     if let webURL = single_attraction["web_url"] as? NSString {
                                         
-                                        let jsonUrl = "https://api.tripadvisor.com/api/partner/2.0/location/" + "\(locationID)" + "/photos?key=HackTripAdvisor-ade29ff43aed"
+                                        let jsonUrl = "https://api.tripadvisor.com/api/partner/2.0/location/" + "\(locationID)" + "/photos?key=4695B5894B33493BA4A0389F61843655"
                                         
                                         let session = NSURLSession.sharedSession()
                                         let shotsUrl = NSURL(string: jsonUrl)
@@ -72,7 +72,7 @@ class Attactions: NSObject {
                                                               //  print("CHeck3")
 
                                                                 if let iDontKnowWhatIShouldCouldThis = singlePhotoLarge["large"] as? NSDictionary {
-                                                                    //print("CHeck4")
+                                                                    print("CHeck4")
 
                                                                     if let photoURL = iDontKnowWhatIShouldCouldThis["url"] as? String {
                                                                         print(locationName)

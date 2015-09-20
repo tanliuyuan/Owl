@@ -10,8 +10,8 @@ import UIKit
 
 // A set of constant and variable strings for making up the URL for article searching using TripAdvisor's API
 let attSearchBaseURL = "https://api.tripadvisor.com/api/partner/2.0/search"
-let attSearchAPIKey = "HackTripAdvisor-ade29ff43aed"
-var attSearchLocation = "beijing"
+let attSearchAPIKey = "4695B5894B33493BA4A0389F61843655"
+var attSearchLocation = "BeiJing"
 //stl?key=HackTripAdvisor-ade29ff43aed"
 /*let articleSearchBaseUrl = "http://api.nytimes.com/svc/mostpopular/v2"
 let articleSearchResourceType = "mostviewed" // mostemailed | mostshared | mostviewed
